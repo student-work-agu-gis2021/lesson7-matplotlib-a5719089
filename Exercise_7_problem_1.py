@@ -63,6 +63,12 @@ data.plot(kind='scatter',x='x',y='y',s=50,c=colors,colormap='rainbow',edgecolor=
 
 # Add labels and title
 # YOUR CODE HERE 4
+title="My random candy points"
+xlabel="X-label"
+ylabel="Y-label"
+plt.title(title)
+plt.xlabel(xlabel)
+plt.ylabel(ylabel)
 
 # Save the plot as a png file:
 outputfp = "my_first_plot.png"
