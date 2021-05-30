@@ -57,9 +57,27 @@ print("Number of rows:", len(selection))
 # 
 
 # YOUR CODE HERE 3
+monthly_data=pd.DataFrame()
+selection['DATA_Month']=selection["date_time"].astype(str).str.slice(start=0,stop=7)
+grouped=selection.groupby('DATA_Month')
+data1=grouped.mean()
+
+monthly_data['temp_celsius_monthly']=data1['TEMP_C']
+monthly_data["TIME"]=data1.index
+monthly_data["TIME"]=monthly_data["TIME"].astype(str).str.slice(start=0,stop=4)
+
+start_time=pd.to_datetime('19880101')
+end_time=pd.to_datetime('20201231')
+
+monthly_data.plot.line(x='TIME',y='temp_celsius_monthly',style=['k.-'],figsize=(14,6))
+
+plt.title("Helsinki-Vantaa Airport")
+plt.xlabel("Time")
+plt.ylabel("Temperature(Celsius)")
+plt.grid()
 
 # Set output file name
-outputfp = ""
+outputfp = "temp_line_plot.png"
 
 # Save plot as image
 # YOUR CODE HERE 4
